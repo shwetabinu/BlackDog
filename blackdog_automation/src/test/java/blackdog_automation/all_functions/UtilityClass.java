@@ -1,8 +1,7 @@
-package blackdog_automation.util;
+package blackdog_automation.all_functions;
 
 import java.io.IOException;
 
-import blackdog_automation.base.BaseClass;
 
 /**
  * Sets the page load timeout time and the implicit wait time

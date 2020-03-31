@@ -6,7 +6,7 @@
 //screen validations on the page throw error
 //test for verification
 
-package blackdog_automation.base;
+package blackdog_automation.all_functions;
 
 import java.io.IOException;
 
@@ -28,17 +28,13 @@ import org.openqa.selenium.Platform;
  * Loads the configuration properties into a properties file
  * Sets the Chrome options, disables notifications in chrome
  * Reads the Browser name and Browser mode from the Test Data file
- * Opens the specified browser (Chrome, Firefox or Opera) in the specified mode
  * Opens a fresh window of the browser, maximizes the screen, deletes all cookies
  * Waits for the Page Load timeout time and again waits for the implicit wait period
  * Opens the url for urbest website
- * 
- *
- *
  */
 
 
-public class BaseClass 
+public class InitClass 
 {
 	public static WebDriver driver;
 	public static final String currentDir = System.getProperty("user.dir");
@@ -46,7 +42,7 @@ public class BaseClass
 	//public static Properties prop;
 
 
-	public BaseClass() throws IOException
+	public InitClass() throws IOException
 	{
 		Log.info("invoking baseclass constructor");
 
@@ -91,42 +87,14 @@ public class BaseClass
 			Log.info("lauching chrome driver");
 			driver = new ChromeDriver(options);
 		}
-		else if(brwName.equals("Firefox"))
-		{
-			if (Platform.getCurrent().toString().equalsIgnoreCase("MAC"))
-				System.setProperty("webdriver.gecko.driver", "browserpath"+"//geckodriver");
-			else if(Platform.getCurrent().toString().contains("WIN"))
-				System.setProperty("webdriver.gecko.driver", "browserpath"+"\\geckodriver.exe");
-			driver = new FirefoxDriver();
-		}
-		else if (brwName.equalsIgnoreCase("Opera"))
-		{
-			if (Platform.getCurrent().toString().equalsIgnoreCase("MAC"))
-				System.setProperty("webdriver.gecko.driver", "browserpath"+"//operadriver");
-			else if(Platform.getCurrent().toString().contains("WIN"))
-				Log.error("Sorry,invalid browser");
-			Log.info("launching opera driver");
-			driver = new OperaDriver();
-		}
 		
-		else if(brwName.equalsIgnoreCase("IE"))
-		{
-			if (Platform.getCurrent().toString().equalsIgnoreCase("MAC"))
-				Log.error("Sorry,invalid browser");
-			else if(Platform.getCurrent().toString().contains("WIN"))
-				System.setProperty("webdriver.gecko.driver", "browserpath"+"\\internetexplorerdriver.exe");
-			Log.info("launching opera driver");
-			driver = new InternetExplorerDriver();
-			
-		}
-		}
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().pageLoadTimeout(UtilityClass.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(UtilityClass.IMPLCIT_WAIT, TimeUnit.SECONDS);
 		Log.info("Launching adactin hotel web page in chrome browser");;
 		driver.get(url);
-
+		}
 	}
 
 	public static void closeBrowser()

@@ -1,0 +1,21 @@
+Qno:,Question Text,Control Type,Answer
+1,Control: Single line textbox,Single line text box,test
+2,Control: Multi-line,Multi-line text box,testing multi-line
+3,Control: DatePicker,DatePicker,11/03/2020
+4,,Plain Text,
+5,Control: Drop Down,Drop Down,Monday
+6,Control: Multi-Choice,Multiple-Choice,How strong the feeling was
+7,Control: Check-boxes,Check-boxes,How my body felt; How my voice changed
+8,Control: Slider-bar,Slider-bar,Disagree
+9,Control: Flip Card,Flip Card,
+10,Control: Text With Image,Text With Image,
+11,Control: Carousel,Carousel,Tears or crying
+12,Control: Accordion,Accordion,First Amendment
+13,Control: Matrix Number,Matrix Number,2;3;2
+14,Control: Matrix Radio,Matrix Radio,Strongly Agree;Agree;Disagree
+15,Control: Matrix Text,Matrix Text,Ab;cd;ef
+16,Control: Audio Text,Audio,
+18,Control: Interactive Body Map,Interactive Body Map,Chest
+19,Control: Input with image & audio ,,
+20,Control: Timer,Text Box,testing multi-line1
+21,Control: Suggestions,Drop Down,Front in front

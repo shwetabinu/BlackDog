@@ -8,7 +8,7 @@ import java.io.IOException;
  * @author aswinvijayan
  *
  */
-public class UtilityClass extends BaseClass
+public class UtilityClass extends InitClass
 {
 	public UtilityClass() throws IOException
 	{

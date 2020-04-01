@@ -18,10 +18,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
-import blackdog_automation.util.Log;
-import blackdog_automation.util.PropertyReader;
-//import adactin.urbest.util.ExcelUtil;
-import blackdog_automation.util.UtilityClass;
+import blackdog_automation.all_functions.Log;
+import blackdog_automation.all_functions.CSV_Reader;
+import blackdog_automation.all_functions.UtilityClass;
 import org.openqa.selenium.Platform;
 
 /** Class to 
@@ -58,17 +57,15 @@ public class InitClass
 	 * @throws Exception 
 	 */
 
-	public static void initBrowser(int i) throws Exception
+	public static void initBrowser() throws Exception
 	{
 
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--disable-notifications");
 
-		String brwName=PropertyReader.propertyReader("config", "browser_name");
-		String brwmode=PropertyReader.propertyReader("config", "browser_mode");
-		String url=PropertyReader.propertyReader("config", "url");
-
-
+		String brwName="Chrome";
+		String brwmode="local";
+		String url="https://uat-idtwo2.blackdoghealth.org.au/Screening.aspx#";
 
 		if (Platform.getCurrent().toString().equalsIgnoreCase("MAC")) {
 			browserpath = currentDir + "//All_browser_exes//";
@@ -76,18 +73,14 @@ public class InitClass
 			browserpath = currentDir + "\\All_browser_exes\\";
 		}
 
-
-		if (brwmode.equalsIgnoreCase("local"))
-		{	if(brwName.equalsIgnoreCase("Chrome"))
-		{
-			if (Platform.getCurrent().toString().equalsIgnoreCase("MAC"))
-				System.setProperty("webdriver.chrome.driver", "browserpath"+"//chromedriver");
-			else if(Platform.getCurrent().toString().contains("WIN"))
+		if (Platform.getCurrent().toString().equalsIgnoreCase("MAC"))
+				System.setProperty("webdriver.chrome.driver", browserpath+"//chromedriver");
+		else if(Platform.getCurrent().toString().contains("WIN"))
 				System.setProperty("webdriver.chrome.driver", "browserpath"+"\\chromedriver.exe");
-			Log.info("lauching chrome driver");
-			driver = new ChromeDriver(options);
-		}
+		Log.info("lauching chrome driver");
+		driver = new ChromeDriver(options);
 		
+	
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().pageLoadTimeout(UtilityClass.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
@@ -95,7 +88,7 @@ public class InitClass
 		Log.info("Launching adactin hotel web page in chrome browser");;
 		driver.get(url);
 		}
-	}
+	
 
 	public static void closeBrowser()
 	{
